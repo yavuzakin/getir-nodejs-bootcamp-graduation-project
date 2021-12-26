@@ -1,7 +1,10 @@
 const Record = require('./../models/Record');
+const ApiError = require('./../scripts/utils/ApiError');
+const logger = require('./../scripts/logger/application');
 
 exports.fetchData = async (req, res) => {
     try {
+        // Get request body
         const startDate = new Date(req.body.startDate);
         const endDate = new Date(req.body.endDate);
         const minCount = req.body.minCount;
@@ -35,15 +38,19 @@ exports.fetchData = async (req, res) => {
             }
         ]);
         
+        // Log 
+        logger.log({ 
+            level: "info",
+            message: `${req.method} ${req.baseUrl} 200`
+        });
+
+        // Response
         res.status(200).json({
             code: 0,
             msg: 'Success',
             records: records
         });
     } catch (err) {
-        res.status(500).json({
-            code: 1,
-            msg: err
-        })
+        new ApiError('Internal server error', 500);
     }
 }
