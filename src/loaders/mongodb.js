@@ -8,9 +8,8 @@ const connectDB = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
-        // Successfull console log
-        console.log('DB connection is successfull');
-        // Successfull file log
+
+        // Successfull file log, it logs to console also
         loggerSuccess.log({
             level: 'info',
             message: 'Connected to DB successfully'
