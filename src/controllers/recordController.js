@@ -2,20 +2,19 @@ const Record = require('./../models/Record');
 const ApiError = require('./../scripts/utils/ApiError');
 const logger = require('./../scripts/logger/application');
 
-exports.fetchData = async (req, res) => {
+exports.fetchData = async (req, res, next) => {
     try {
         // Get request body
         const startDate = new Date(req.body.startDate);
         const endDate = new Date(req.body.endDate);
-        const minCount = req.body.minCount;
-        const maxCount = req.body.maxCount;
+        const { minCount, maxCount } = req.body;
 
         const records = await Record.aggregate([
             // First filter createdAt by startDate and endDate
             {
                 $match: { $and: [ { createdAt: { $gt: startDate } }, { createdAt: { $lt: endDate } } ] }
             },
-            // Create one document per one element in count array by extracting count from array
+            // Create one document per one element in count array by extracting count elements from array
             {
                 $unwind: '$counts'
             },
@@ -37,10 +36,10 @@ exports.fetchData = async (req, res) => {
                 $match: { $and: [ { totalCount: { $gte: minCount } }, { totalCount: { $lte: maxCount } } ] }
             }
         ]);
-        
-        // Log 
+
+        // Log file
         logger.log({ 
-            level: "info",
+            level: 'info',
             message: `${req.method} ${req.baseUrl} 200`
         });
 
@@ -51,6 +50,6 @@ exports.fetchData = async (req, res) => {
             records: records
         });
     } catch (err) {
-        new ApiError('Internal server error', 500);
+        next(new ApiError('Internal server error', 500));
     }
 }
