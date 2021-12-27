@@ -55,6 +55,10 @@ To run this project, you will need to add the following environment variables to
 | `minCount`  | Number. The minimum value            |
 | `maxCount`  | Number. The maximum value            |
 
+## Public URL
+
+https://yavuzakin-getir-task.herokuapp.com
+
 ## Technologies Used
 
 **Server:** Node, Express
