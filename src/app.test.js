@@ -33,7 +33,7 @@ describe('POST /api/v1/records', () => {
                 {endDate: '2021-02-11', minCount: 1, maxCount: 1000},
                 {startDate: '2016-12-31', minCount: 1, maxCount: 1000},
                 {startDate: '2016-12-31', endDate: '2021-02-11', maxCount: 1000},
-                {startDate: '2016-12-31', endDate: '2021.02.11', minCount: 1},
+                {startDate: '2016-12-31', endDate: '2021-02-11', minCount: 1},
                 {}
             ];
             for(const body of bodyData) {
