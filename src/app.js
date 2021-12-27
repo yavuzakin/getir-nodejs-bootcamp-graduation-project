@@ -24,7 +24,4 @@ app.all('*', (req, res, next) => {
 // Global error handler
 app.use(errorHandler);
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Listening port number ${port}...`);
-});
+module.exports = app;
