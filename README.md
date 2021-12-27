@@ -7,7 +7,7 @@ A backend project which uses NodeJS, Express and MongoDB.
 Use the package manager [npm](https://www.npmjs.com/) to install project.
 
 ```bash
-  git clone https://github.com/getir-nodejs-bootcamp-graduation-project.git
+  git clone https://github.com/yavuzakin/getir-nodejs-bootcamp-graduation-project.git
 
   cd getir-nodejs-bootcamp-graduation-project
 
