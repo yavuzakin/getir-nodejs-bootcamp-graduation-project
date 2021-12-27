@@ -7,7 +7,6 @@ const connectDB = async () => {
         await mongoose.connect(process.env.MONGODB_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useMongoClient: true,
         });
 
         // Successfull file log, it logs to console also
