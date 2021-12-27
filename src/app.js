@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const loaders = require('./loaders');
 const config = require('./config');
 const recordRouter = require('./routes/recordRoutes');
@@ -12,6 +13,12 @@ const app = express();
 
 // Body parser, reading data from body into req.body
 app.use(express.json());
+
+// Enable cors
+app.use(cors({
+    methods: '*',
+    origin: '*'
+}));
 
 // Route
 app.use('/api/v1/records', recordRouter);
