@@ -1,4 +1,3 @@
-const Record = require('./../models/Record');
 const ApiError = require('./../scripts/utils/ApiError');
 const logger = require('./../scripts/logger/application');
 const recordService = require('./../services/recordService');
@@ -11,7 +10,7 @@ exports.fetchData = async (req, res, next) => {
         const { minCount, maxCount } = req.body;
 
         const records = await recordService.getFilteredRecords(startDate, endDate, minCount, maxCount);
-        
+
         // Log file
         logger.log({ 
             level: 'info',
