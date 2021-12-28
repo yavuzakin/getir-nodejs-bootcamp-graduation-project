@@ -1,6 +1,12 @@
 # Case Study
 
-A backend project which uses NodeJS, Express and MongoDB.
+* Code is written in Node.js using Express framework.
+* Endpoint handles only HTTP POST requests.
+* Application is deployed to Heroku.
+* Layered architecture is implemented.
+* Error handling is implemented.
+* Logging is implemented. (src/logs/..)
+* Test is applied.
 
 ## Installation 
 
